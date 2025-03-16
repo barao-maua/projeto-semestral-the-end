@@ -10,7 +10,7 @@ Neste projeto, buscamos desenvolver um gerenciador de tarefas web com o objetivo
 - PostgreSQL ou MySQL
 - APIs necessárias em atualização posterior...
 ## Membros
-Leonardo Franzin
-Mateus Guidelli
-André Henrique
-João Bolito
+- Leonardo Franzin
+- Mateus Guidelli
+- André Henrique
+- João Bolito
