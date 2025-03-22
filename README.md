@@ -14,3 +14,7 @@ Neste projeto, buscamos desenvolver um gerenciador de tarefas web com o objetivo
 - Mateus Guidelli
 - André Henrique
 - João Bolito
+## Codes sequences
+- pip install django
+- py -m django startproject cafecompao
+- python manage.py startapp padarias
