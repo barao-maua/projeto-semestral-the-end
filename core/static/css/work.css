@@ -146,3 +146,64 @@ button:active {
     color: var(--cor-preto); /* Alterando a cor do texto também */
     transition: background-color 0.05s ease-in-out, color 0.05s ease-in-out;
 }
+
+.dashMain {
+    align-items: flex-start;
+    justify-content: start;
+}
+
+.smallHeader {
+    font-size: 20px;
+}
+
+.tarefas {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.outerBox {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    flex: 1;
+}
+
+.innerBox {
+    background-color: #f3f3f3;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.outerBox h2 {
+    color: #8a8a8a;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.innerBox h3 {
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.innerBox div {
+    display: flex;
+    gap: 3px
+}
+
+.innerBox div p {
+    font-size: 18px;
+}
+
+.outerBox button {
+    background-color: transparent;
+    margin: 5px;
+    padding: 20px;
+}
+
+.outerBox button p {
+    margin: 0px;
+    font-size: 16px;
+    color: black;
+}
