@@ -1,3 +1,4 @@
 django
 django_browser_reload
 gunicorn
+whitenoise
