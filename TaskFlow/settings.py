@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+
+PORT = os.getenv("PORT", "8000")
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-&!ryh3=4970&py8#i+pvz=)w69w)n8n59fsz@5z-lsj^34*v6f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['taskflow-6b7m.onrender.com']
 
 
 # Application definition
