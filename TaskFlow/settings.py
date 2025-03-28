@@ -31,7 +31,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['taskflow-6b7m.onrender.com', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
