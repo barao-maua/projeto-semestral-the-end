@@ -31,7 +31,6 @@ header {
     display: flex;
     background-color: var(--cor-branco);
     color: var(--cor-preto);
-    padding: 10px;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 5px 8px var(--cor-sombra);
@@ -44,7 +43,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 /* Estilizando o footer */
@@ -52,7 +50,6 @@ footer {
     flex: 1;
     background-color: var(--cor-branco);
     color: var(--cor-texto);
-    padding: 10px;
     text-align: center;
 }
 
@@ -138,4 +135,59 @@ button:active {
     color: var(--cor-preto); /* Alterando a cor do texto também */
     transform: scale(1.05); /* Pequena redução ao clicar */
     transition: background-color 0.05s ease-in-out, color 0.05s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Estilos padrão já existentes acima */
+
+@media screen and (max-width: 768px) {
+    /* Ajustando o layout */
+    body {
+        flex-direction: column;
+    }
+
+    /* Reduzindo o tamanho do título */
+    h1 {
+        font-size: 40px;
+    }
+
+    /* Ajustando a descrição */
+    .description {
+        font-size: 16px;
+        max-width: 90%;
+    }
+
+    /* Ajustando o header */
+    header {
+        flex: none; /* Mantém o tamanho fixo */
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Ajustando o main */
+    main {
+        flex: 1;
+        padding: 10px;
+    }
+
+    /* Ajustando o footer */
+    footer {
+        flex: none;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Ajustando a lista para melhor visualização */
+    ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    /* Ajustando os botões para serem mais fáceis de tocar */
+    button {
+        width: 100%;
+        max-width: 250px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
 }
