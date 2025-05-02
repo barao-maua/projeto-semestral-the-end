@@ -9,5 +9,8 @@ def dashboard(request):
 def login(request):
     return render(request, 'login.html')
 
+def register(request):
+    return render(request, 'register.html')
+
 def Sobre(request):
     return render(request, 'sobre.html')

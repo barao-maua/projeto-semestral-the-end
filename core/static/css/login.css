@@ -1,69 +1,77 @@
 
-.content{
+.content-r{
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100%;
-    background: #f7f7f7;
+    align-items: center;
+    flex: 1;
+}
+
+.content-l{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px;
+    flex: 1;
+}
+
+.content-l h1{
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 .wrapper{
     display: flex;
+    width: 50%;
     flex-direction: column;
     align-content: center;
-    max-width: 430px;
-    width: 100%;
     background:#fff;
     padding: 34px;
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
+.app {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.app-icon {
+    width: 50px;
+    height: 7%;
+}
+
+.app-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+}
 
 .wrapper h2{
-    position: relative;
     font-size: 22px;
     font-weight: 600;
     color: #333;
 }
 
-
-.wrapper h2::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 28px;
-    border-radius: 12px;
-    background: #4070f4;
-}
-
-
-.wrapper form{
-    margin-top: 30px;
-}
-
-
-.wrapper form .input-box{
-    height: 52px;
+.input-box{
+    display: flex;
+    height: 45px;
     margin: 18px 0;
 }
 
-
-form .input-box input {
-    height: 100%;
-    width: 100%;
+.input-box input {
+    flex: 1;
     outline: none;
-    padding: 0 15px;
     font-size: 17px;
+    padding-left: 10px;
     font-weight: 400;
     color: #333;
     border: 1.5 solid #c7bebe;
     border-bottom-width: 2.5px;
     border-radius: 6px;
     transition: all 0.3s ease ;
-    
 }
 
 
@@ -86,8 +94,21 @@ form h3{
     margin-left: 10px;
 }
 
+form .policy input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 
-.input-box.button input{
+.button{
+    margin: 20px 0;
+    height: 45px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+}
+
+.button input{
     color: #fff;
     letter-spacing: 1px;
     border: none;
@@ -96,9 +117,11 @@ form h3{
 }
 
 
-.input-box.button input:hover{
+.button input:hover{
     background: #0e4bf1;
 }
+
+
 
 
 form .text h3{

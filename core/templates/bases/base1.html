@@ -1,0 +1,23 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="{% static 'css/base1.css' %}">
+        <link rel="icon" type="image/png" href="{% static 'images/app.png' %}">
+    </head>
+    <body>
+        {% include "components/header.html" %}
+
+        <main>
+        {% block content %}
+        {% endblock content %}
+        </main>
+
+        {% include "components/footer.html" %}
+    </body>
+</html>

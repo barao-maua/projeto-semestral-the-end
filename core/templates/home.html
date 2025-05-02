@@ -1,12 +1,18 @@
-{% extends "bases/intro.html" %}
+{% extends "bases/base1.html" %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 {% block content %}
 
-<h1>TaskFlow</h1>
-<span class="description">Neste projeto, buscamos desenvolver um gerenciador de tarefas web com o objetivo de organizar e acompanhar tarefas de forma eficiente. O sistema permitirá classificar as tarefas como concluídas, não concluídas ou em andamento, além de categorizá-las e definir prazos de entrega e finalização. Também será disponibilizada uma tabela para a visualização das tarefas, tanto de um projeto específico quanto do dia a dia.</span>
-<button>Começar</button>
+<div style="background: linear-gradient(rgba(122, 122, 122, 0.7), rgba(122, 122, 122, 0.7)), url({% static 'images/b1.jpg' %}); 
+            background-size: cover; background-position: center; border-radius: 20px; height: 80vh; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <h1>TaskFlow</h1>
+    <span class="description">Neste projeto, buscamos desenvolver um gerenciador de tarefas web com o objetivo de organizar e acompanhar tarefas de forma eficiente. O sistema permitirá classificar as tarefas como concluídas, não concluídas ou em andamento, além de categorizá-las e definir prazos de entrega e finalização. Também será disponibilizada uma tabela para a visualização das tarefas, tanto de um projeto específico quanto do dia a dia.</span>
+    <button>Começar</button>
+</div>
+
 
 {% endblock content %}
 
