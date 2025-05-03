@@ -1,4 +1,13 @@
 
+
+.alert {
+    padding: 8px;
+    background-color: #f44336;
+    border-radius: 15px;
+    color: white;
+}
+
+
 .content-r{
     display: flex;
     justify-content: center;
@@ -24,7 +33,7 @@
     width: 50%;
     flex-direction: column;
     align-content: center;
-    background:#fff;
+    background:#f2f2f2;
     padding: 34px;
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);

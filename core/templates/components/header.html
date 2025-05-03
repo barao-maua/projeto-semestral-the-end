@@ -1,15 +1,15 @@
 {% load static %}
 
 <header>
-    <a href="/" class="grow" >
+    <a href="" class="grow" >
         <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
     </a>
     <ul>
         <li class="grow" ><a href="/">Home</a></li>
-        <li class="grow" ><a href="dashboard">Dashboard</a></li>
-        <li class="grow" ><a href="sobre">Sobre</a></li>
+        <li class="grow" ><a href="{% url "dashboard_main" %}">Dashboard</a></li>
+        <li class="grow" ><a href="{% url "about" %}">Sobre</a></li>
     </ul>
-    <a href="login">
+    <a href="{% url "login" %}">
         <img class="app-icon" src="{% static "images/user.png" %}" alt="">
     </a>
 </header>

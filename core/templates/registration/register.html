@@ -1,0 +1,72 @@
+{% extends "bases/base3.html" %}
+
+{% load static %}
+
+{% block title %}Cadastrar{% endblock title %}
+
+{% block content_left %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <a href="/" class="grow app" >
+        <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
+        <span class="app-text">TaskFlow</span>
+    </a>
+    <div class="content-l">        
+        <h1>Bem-vindo ao nosso site!</h1>
+        <p>Faça seu cadastro e aproveite todos os nossos serviços.</p>
+    </div>
+{% endblock content_left %}
+
+{% block content_right %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <div class="content-r">
+        <div class="wrapper">
+            <h2>Cadastro</h2>
+            <p>Preencha os campos abaixo para criar sua conta.</p>
+            {% if form.errors %}
+                <div class="alert">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form id="formCadastro" name="formulario" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                
+                <div class="input-box">
+                    <input type="text" name="username" id="username" placeholder="Insira seu nome" required>
+                </div>
+                
+                <div class="input-box">
+                    <input type="email" name="email" id="email" placeholder="Insira seu email" required>
+                </div>
+                
+                <div class="input-box">
+                    <input type="password" name="password" id="password" placeholder="Crie uma senha" minlength="5" required>
+                </div>
+                
+                <div class="input-box">
+                    <input name="repetir_senha" id="repetir_senha" type="password" placeholder="Repita a senha" required>
+                </div>
+                
+                <div class="policy">
+                    <input type="checkbox" required>
+                    <h3>Aceito todos os termos e condições</h3>
+                </div>
+                
+                <div class="input-box button">
+                    <input type="submit" value="Criar">
+                </div>
+                
+                <div class="text">
+                    <h3>Já possui conta? <a href="{% url 'login' %}">Login</a></h3>
+                </div>
+            </form>            
+        </div>
+    </div>
+{% endblock content_right %}
+

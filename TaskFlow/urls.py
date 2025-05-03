@@ -17,15 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.contrib.auth import views as auth_views
 
 from core import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core_views.home, name='home'),
-    path('dashboard', core_views.dashboard, name='dashboard'),
-    path("login", core_views.login, name='login'),
-    path("register", core_views.register, name='register'),
-    path("sobre", core_views.Sobre, name='sobre'),
+    path('accounts/', include("django.contrib.auth.urls")),
+    path('accounts/register', core_views.register, name='register'),
+    path('dashboard', core_views.dashboard_main, name='dashboard_main'),
+    path("about", core_views.about, name='about'),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
