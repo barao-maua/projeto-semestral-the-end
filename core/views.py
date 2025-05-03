@@ -26,7 +26,23 @@ def register(request):
         return redirect('login')
     return render(request, 'registration/register.html')
 
+# Visualização das informações do usuário
 @login_required
 def dashboard_main(request):
     return render(request, 'dashboard/main.html')
 
+@login_required
+def dashboard_profile(request):
+    return render(request, 'dashboard/profile.html')
+
+@login_required
+def dashboard_projects(request):
+    return render(request, 'dashboard/projects.html')
+
+@login_required
+def dashboard_tasks(request):
+    return render(request, 'dashboard/tasks.html')
+
+@login_required
+def dashboard_analytics(request):
+    return render(request, 'dashboard/analytics.html')
