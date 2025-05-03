@@ -26,6 +26,19 @@ def register(request):
         return redirect('login')
     return render(request, 'registration/register.html')
 
+@login_required
+def dashboard_projects(request):
+    if request.method == 'GET':
+        return render(request, 'dashboard/projects.html')
+    if request.method == 'POST':
+        name = request.POST['name']
+        description = request.POST['description']
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+        
+        return render(request, 'dashboard/projects.html')
+    return render(request, 'dashboard/projects.html')
+
 # Visualização das informações do usuário
 @login_required
 def dashboard_main(request):
@@ -35,9 +48,6 @@ def dashboard_main(request):
 def dashboard_profile(request):
     return render(request, 'dashboard/profile.html')
 
-@login_required
-def dashboard_projects(request):
-    return render(request, 'dashboard/projects.html')
 
 @login_required
 def dashboard_tasks(request):

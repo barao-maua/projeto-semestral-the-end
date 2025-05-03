@@ -1,0 +1,70 @@
+{% extends "bases/base2.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content_left %}
+
+<header>
+    <a class="app" href="/">
+        <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
+        <span class="app-text" >TaskFlow</span>
+    </a>
+    <ul class="link">
+        <li>
+            <a href="./projects">Projects</a>
+        </li>
+        <li>
+            <a href="">Board</a>
+        </li>
+        <li>
+            <a href="">Analytics</a>
+        </li>
+        <li>
+            <a href="">Panel</a>
+        </li>
+        <li>
+            <a href="">Settings</a>
+        </li>
+    </ul>
+
+    <button>Log out</button>
+</header>
+{% endblock content_left %}
+
+{% block content_right %}
+<link rel="stylesheet" href="{% static 'css/project_form.css' %}">
+<main class="dashMain">
+    <div>
+        <h1 class="smallHeader">Projetos</h1>
+    </div>
+    <section class="projetos">
+        <form id="formCriarProjeto" name="formulario" action="{% url 'dashboard_projects' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="input-box">
+                <input type="text" name="name" id="name" placeholder="Insira o nome do projeto" required>
+            </div>
+            
+            <div class="input-box">
+                <input type="text" name="description" id="description" placeholder="Insira a descrição do projeto" required>
+            </div>
+            
+            <div class="input-box">
+                <label for="start_date">Data de início: </label>
+                <input type="date" name="start_date" id="start_date" required>
+            </div>
+            
+            <div class="input-box">
+                <label for="end_date">Data de término: </label>
+                <input type="date" name="end_date" id="end_date" required>
+            </div>
+            
+            <div class="input-box button">
+                <input type="submit" value="Criar Projeto">
+            </div>
+            
+        </form>
+    </section>
+</main>
+{% endblock content_right %}
