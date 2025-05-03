@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -23,7 +23,7 @@ def register(request):
         user = User.objects.create_user(username=username, password=password, email=email)
         user.save()
         
-        return render(request, 'registration/login.html', {'success': 'User created successfully'})
+        return redirect('login')
     return render(request, 'registration/register.html')
 
 @login_required
