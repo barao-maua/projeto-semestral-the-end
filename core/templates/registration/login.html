@@ -37,7 +37,7 @@
             <form id="formCadastro" name="formulario" method="post">
                 {% csrf_token %}
                 <div class="input-box">
-                    <input type="email" id="email" name="username" placeholder="Digite seu email" required>
+                    <input type="text" id="username" name="username" placeholder="Digite seu nome de usuário" required>
                 </div>
                 <div class="input-box">
                     <input id="txtSenha" type="password" name="password" placeholder="Digite sua senha" minlength="5" required>
@@ -48,7 +48,7 @@
                 <div class="text">
                     <h3>Ainda não criou uma conta? <a href="{% url 'register' %}">Registre-se</a></h3>
                 </div>
-            </form>
+            </form>            
         </div>
     </div>
 {% endblock content_right %}
