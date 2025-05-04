@@ -1,3 +1,10 @@
+.alert {
+    padding: 8px;
+    background-color: #f44336;
+    border-radius: 15px;
+    color: white;
+}
+
 .input-box{
     display: flex;
     height: 45px;
@@ -38,8 +45,9 @@
     background: #161515;
 }
 
-
-
+#formCriarProjeto {
+    padding-left: 1rem;
+}
 
 form .text h3{
     color: #333;

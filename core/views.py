@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_list_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from core.models import Project
+import datetime
 
 def home(request):
     return render(request, 'home.html')
@@ -28,16 +30,16 @@ def register(request):
 
 @login_required
 def dashboard_projects(request):
-    if request.method == 'GET':
-        return render(request, 'dashboard/projects.html')
     if request.method == 'POST':
         name = request.POST['name']
         description = request.POST['description']
         start_date = request.POST['start_date']
         end_date = request.POST['end_date']
-        
-        return render(request, 'dashboard/projects.html')
-    return render(request, 'dashboard/projects.html')
+        project = Project(1, name, description, start_date, end_date, datetime.datetime.now())
+
+        project.save()
+    projects = Project.objects.all()
+    return render(request, 'dashboard/projects.html', {projects: projects})
 
 # Visualização das informações do usuário
 @login_required
