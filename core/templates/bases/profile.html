@@ -1,0 +1,28 @@
+{% load static %}
+
+{% comment %} Formato horizontal padrão com header, main {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/app.png' %}">
+</head>
+<body>
+    {% include "components/header_work.html" %}
+
+    <div class="container">
+        {% include "components/sidebar_work.html" %}
+
+        {% include "components/sidebar_optional.html" %}
+
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </div>
+</body>
+</html>

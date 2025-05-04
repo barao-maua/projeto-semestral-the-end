@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Task, Comment, ProjectPermission, Project, Notification
+from .models import Category, Task, Comment, ProjectPermission, Project, Notification, Profile
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ admin.site.register(Comment)
 admin.site.register(ProjectPermission)
 admin.site.register(Project)
 admin.site.register(Notification)
+admin.site.register(Profile)

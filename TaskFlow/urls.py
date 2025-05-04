@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from core import views as core_views
 
@@ -26,9 +27,10 @@ urlpatterns = [
     path('', core_views.home, name='home'),
     path('accounts/', include("django.contrib.auth.urls")),
     path('accounts/register', core_views.register, name='register'),
-    path('dashboard', core_views.dashboard_main, name='dashboard_main'),
+    path('dashboard/', core_views.dashboard_main, name='dashboard_main'),
+    path('profile', core_views.profile, name='profile'),
+    path('profile/edit', core_views.profile_edit, name='profile_edit'),
     path('projects', core_views.dashboard_projects, name='dashboard_projects'),
-    path('dashboard/profile', core_views.dashboard_profile, name='dashboard_profile'),
     path("about", core_views.about, name='about'),
     path("__reload__/", include("django_browser_reload.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

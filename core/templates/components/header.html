@@ -3,18 +3,18 @@
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <header>
-    <a href="" class="grow" >
+    <a href="{% url "home" %}" class="grow" >
         <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
     </a>
     <ul>
-        <li class="grow" ><a href="/">Home</a></li>
+        <li class="grow" ><a href="{% url "home" %}">Home</a></li>
         <li class="grow" ><a href="{% url "dashboard_main" %}">Dashboard</a></li>
         <li class="grow" ><a href="{% url "about" %}">Sobre</a></li>
     </ul>
     {% if user.is_authenticated %}
         <button class="login">
             <span>{{user.username}}</span>
-            <img class="login-icon" src="{% static "images/user.png" %}" alt="">
+            <img class="login-icon" src="{{ user.profile.photo.url }}" alt="">
         </button>
     {% else %}
         <a class="login" href="{% url "login" %}">
