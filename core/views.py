@@ -55,7 +55,7 @@ def dashboard_main(request):
     return render(request, 'dashboard/main.html')
 
 @login_required
-def dashboard_tasks(request):
+def task(request):
     return render(request, 'dashboard/tasks.html')
 
 @login_required
