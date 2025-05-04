@@ -29,6 +29,7 @@ urlpatterns = [
     path('accounts/register', core_views.register, name='register'),
     path('dashboard/', core_views.dashboard_main, name='dashboard_main'),
     path('task/', core_views.task, name='task'),
+    path('teams/', core_views.teams, name='teams'),
     path('profile', core_views.profile, name='profile'),
     path('profile/edit', core_views.profile_edit, name='profile_edit'),
     path('projects', core_views.dashboard_projects, name='dashboard_projects'),
