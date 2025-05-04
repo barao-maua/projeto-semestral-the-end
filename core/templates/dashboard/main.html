@@ -18,10 +18,10 @@
                     <img src="{% static 'images/default-avatar.png' %}" alt="Profile Picture">
                 </div>
                 <div class="profile-details">
-                    <p><strong>Name:</strong> João</p>
+                    <p><strong>Name:</strong> {{user.username}}</p>
                     <p><strong>Email:</strong> {{ user.email }}</p>
-                    <p><strong>Status:</strong> Active</p>
-                    <p><strong>Last Login:</strong> 2 hours ago</p>
+                    <p><strong>Ultimo acesso:</strong> {{ user.last_login }}</p>
+                    <p><strong>Data de criação:</strong>{{ user.date_joined }}</p>
                 </div>
             </div>
         </div>
