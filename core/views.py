@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from core.models import Project
 import datetime
 
+import pprint
+
 def home(request):
     return render(request, 'home.html')
 
