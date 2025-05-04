@@ -1,0 +1,17 @@
+{% extends "bases/dashboard.html" %}
+
+{% load static %}
+
+{% block title %}Perfil{% endblock title %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <div class="profile">
+        <h2>Perfil</h2>
+        <p>Nome: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Foto: <img src="{{ user.profile.photo.url }}" alt="Foto de perfil" class="profile-photo"></p>
+        <p>Ultimo acesso: {{ user.last_login }}</p>
+        <p>Data de criação: {{ user.date_joined }}</p>
+    </div>
+{% endblock content %}

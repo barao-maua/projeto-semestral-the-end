@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
@@ -11,15 +10,8 @@
         <li class="grow" ><a href="{% url "dashboard_main" %}">Dashboard</a></li>
         <li class="grow" ><a href="{% url "about" %}">Sobre</a></li>
     </ul>
-    {% if user.is_authenticated %}
-        <button class="login">
-            <span>{{user.username}}</span>
-            <img class="login-icon" src="{% static "images/user.png" %}" alt="">
-        </button>
-    {% else %}
-        <a class="login" href="{% url "login" %}">
-            <span>Login</span>
-            <img class="app-icon" src="{% static "images/user.png" %}" alt="">
-        </a>
-    {% endif %}
+    <button class="login">
+        <span>{{user.username}}</span>
+        <img class="login-icon" src="{% static "images/user.png" %}" alt="">
+    </button>
 </header>

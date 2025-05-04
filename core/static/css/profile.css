@@ -1,0 +1,27 @@
+
+.profile {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.profile h2 {
+    font-size: 40px;
+    color: #000000;
+}
+
+.profile p {
+    width: fit-content;
+    font-size: 20px;
+    margin: 5px;
+    color: #666;
+    background-color: #ffffffa8;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.profile p:hover {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}

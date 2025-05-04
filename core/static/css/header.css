@@ -1,0 +1,35 @@
+
+.login {
+    display: flex;
+    background-color: #00000000;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 5px;
+    gap: 10px;
+    padding: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.login:hover {
+    background-color: #00000017;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.login-icon {
+    width: 35px;
+    height: 35px;
+}
+
+
+.app-icon {
+    width: 40px;
+    height: 40px;
+}

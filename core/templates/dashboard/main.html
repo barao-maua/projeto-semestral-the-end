@@ -1,94 +1,13 @@
-{% extends "bases/base2.html" %}
+{% extends "bases/dashboard.html" %}
+
 {% load static %}
 
 {% block title %}Dashboard{% endblock title %}
 
-{% block content_left %}
-<header>
-    <a class="app" href="/">
-        <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
-        <span class="app-text" >TaskFlow</span>
-    </a>
-    <ul class="link">
-        <li>
-            <a href="./projects">Projects</a>
-        </li>
-        <li>
-            <a href="">Board</a>
-        </li>
-        <li>
-            <a href="">Analytics</a>
-        </li>
-        <li>
-            <a href="">Panel</a>
-        </li>
-        <li>
-            <a href="">Settings</a>
-        </li>
-    </ul>
-
-    <button>Log out</button>
-</header>
-{% endblock content_left %}
-
-{% block content_right %}
-<main class="dashMain">
-    <div>
-        <h1 class="smallHeader">Projeto</h1>
+{% block content %}
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        <p>Welcome to the dashboard!</p>
+        <p>This is where you can manage your settings and view your profile.</p>
     </div>
-    <section class="tarefas">
-        <div class="outerBox">
-            <h2>Não iniciado</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
-            </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
-        </div>
-        <div class="outerBox">
-            <h2>Em progresso</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
-            </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
-        </div>
-        <div class="outerBox">
-            <h2>Concluido</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
-            </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
-        </div>
-    </section>
-</main>
-{% endblock content_right %}
-
+{% endblock content %}

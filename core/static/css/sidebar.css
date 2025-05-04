@@ -1,0 +1,42 @@
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    gap: 10px;
+    width: 80px;
+    height: 100%;
+}
+
+.icon-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.icon-bar img {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-bar:hover {
+    background-color: #0000001d;
+    transform: scale(1.1);
+}
+
+.icon-bar span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    color: #000;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
