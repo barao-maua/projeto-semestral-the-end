@@ -56,6 +56,15 @@ def dashboard_main(request):
 
 @login_required
 def task(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+        task = Task(1, title, description, start_date, end_date, datetime.datetime.now())
+
+        task.save()
+    tasks = Task.objects.all()
     return render(request, 'dashboard/tasks.html')
 
 @login_required

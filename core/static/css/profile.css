@@ -25,3 +25,9 @@
     background-color: #ffffff;
     transition: background-color 0.3s ease;
 }
+
+.profile-picture img {
+    border-radius: 50%;
+    border: 2px solid #0000001d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

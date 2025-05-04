@@ -5,7 +5,7 @@
     justify-content: top;
     align-items: center;
     gap: 10px;
-    width: 80px;
+    min-width: 100px;
     height: 100%;
 }
 
@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 50px;
+    width: 60px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 5px;
     padding: 5px;
@@ -49,9 +49,7 @@
     align-items: center;
     gap: 5px;
     width: 400px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 5px;
-    padding: 5px;
 }
 
 .sidebar-optional a {

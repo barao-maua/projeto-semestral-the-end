@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 
     <div class="profile-container">
-        <h2>Perfil</h2>
-
-
-        <hr>
-
         <div class="profile-edit">
             <h3>Editar Perfil</h3>
 
@@ -40,13 +35,18 @@
 
     <style>
         .profile-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 30px;
-            background-color: #fdfdfd;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            font-family: Arial, sans-serif;
+            width: 100%;    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .profile-edit {
+            background-color: #f9f9f9;
+            padding: 30px 20px 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .profile-container h2,
@@ -74,6 +74,8 @@
         }
 
         .form-group {
+            display: flex;
+            flex-direction: column;
             margin-bottom: 20px;
         }
 
@@ -87,7 +89,7 @@
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group input[type="file"] {
-            width: 100%;
+            flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;

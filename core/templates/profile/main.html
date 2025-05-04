@@ -16,9 +16,9 @@
             <div class="status-box">
                 <div class="profile-picture">
                     {% if user.profile.has_photo %}
-                        <img src="{% static 'images/user.png' %}" alt="Profile Picture">
-                    {% else %}
                         <img src="{{ user.profile.photo.url }}" alt="Profile Picture">
+                    {% else %}
+                        <img src="{% static 'images/user.png' %}" alt="Profile Picture">
                     {% endif %}
                 </div>
                 <div class="profile-details">
