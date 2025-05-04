@@ -6,12 +6,107 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <div class="profile">
+
+    <div class="profile-container">
         <h2>Perfil</h2>
-        <p>Nome: {{ user.username }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Foto: <img src="{{ user.profile.photo.url }}" alt="Foto de perfil" class="profile-photo"></p>
-        <p>Ultimo acesso: {{ user.last_login }}</p>
-        <p>Data de criação: {{ user.date_joined }}</p>
+
+
+        <hr>
+
+        <div class="profile-edit">
+            <h3>Editar Perfil</h3>
+
+            <form method="POST" enctype="multipart/form-data" class="edit-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username">Nome</label>
+                    <input type="text" name="username" id="id_username" value="{{ user.username }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_email">E-mail</label>
+                    <input type="email" name="email" id="id_email" value="{{ user.email }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_photo">Foto de Perfil</label>
+                    <input type="file" name="photo" id="id_photo">
+                </div>
+
+                <button type="submit" class="btn-save">Salvar Alterações</button>
+            </form>
+        </div>
     </div>
+
+    <style>
+        .profile-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fdfdfd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-container h2,
+        .profile-container h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-view p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 5px;
+        }
+
+        .edit-form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .btn-save {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-save:hover {
+            background-color: #45a049;
+        }
+    </style>
 {% endblock content %}
