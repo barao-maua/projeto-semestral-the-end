@@ -5,9 +5,87 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-    <div class="dashboard">
-        <h1>Dashboard</h1>
-        <p>Welcome to the dashboard!</p>
-        <p>This is where you can manage your settings and view your profile.</p>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Dashboard</h1>
+            <p>Welcome to your dashboard! Here you can manage your settings and view your profile status.</p>
+        </div>
+
+        <div class="profile-status">
+            <h2>User Profile Status</h2>
+            <div class="status-box">
+                <div class="profile-picture">
+                    <img src="{% static 'images/default-avatar.png' %}" alt="Profile Picture">
+                </div>
+                <div class="profile-details">
+                    <p><strong>Name:</strong> João</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Status:</strong> Active</p>
+                    <p><strong>Last Login:</strong> 2 hours ago</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .dashboard-header p {
+            font-size: 1.2rem;
+            color: #777;
+        }
+
+        .profile-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-picture img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-details p {
+            font-size: 1rem;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .profile-details strong {
+            color: #333;
+        }
+    </style>
 {% endblock content %}
