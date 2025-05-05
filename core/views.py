@@ -76,6 +76,10 @@ def profile(request):
     return render(request, 'profile/main.html')
 
 @login_required
+def teams(request):
+    return render(request, 'dashboard/teams.html')
+
+@login_required
 def profile_edit(request):
     user = request.user
     profile = Profile.objects.get(user=user)
