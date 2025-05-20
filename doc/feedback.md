@@ -12,3 +12,13 @@ Alguns pontos:
 - Outras libs legais que podem ajudar são `HTMX` e `Django Cotton` para componentização embora acho que, no caso de vcs, não seja necessário mas vale conhecer
 - Muito bom que subiram o projeto no onrender ai ja viram pacotes como o `gunicorn` e o `whitenoise` que sao importnates para deploy
 Parabéns!
+
+## E3
+
+Olá pessoal! Segue o feedback de vcs:
+- (3) Models: Ótimo! Gostei dos models criados legal que usaram validoes e criaram metodos a mais ali para facilitar a implementacao! Parabéns!
+- (1) Admin: Tudo certo!
+- (2) Autenticação: ótimo!
+- (4) 2 Views com Models: tudo certo nas views também. Pequenos detalhes:
+	- Linha 67 parece ser desnecessario pois pegam as tasks mas nao utilizam
+- Parabéns!
