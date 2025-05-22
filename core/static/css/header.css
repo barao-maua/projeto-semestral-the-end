@@ -32,3 +32,86 @@
     width: 40px;
     height: 40px;
 }
+
+
+
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Estilo do botão com nome e foto */
+.login {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Estilo do menu suspenso */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: white;
+  min-width: 160px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  border-radius: 4px;
+}
+
+/* Estilo de cada item do menu */
+.dropdown-content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content form button {
+  all: unset; /* remove estilos padrão */
+  padding: 10px 16px;
+  color: black;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: none;
+  white-space: nowrap; /* impede quebra de linha */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+/* Efeito ao passar o mouse (opcional) */
+.dropdown-content form:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.show {
+  display: block;
+}

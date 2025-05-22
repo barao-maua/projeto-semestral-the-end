@@ -4,46 +4,23 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/project_form.css' %}">
-<section class="projetos">
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+<section class="field">
     <h1 class="smallHeader">Projetos</h1>
-    {% if form.errors %}
-    <div class="alert">
-        {% for field in form %}
-            {% for error in field.errors %}
-                <p>{{ error }}</p>
-            {% endfor %}
+    <ul class="projects">
+        <a class="add-project" href="{% url "create_project" %}">
+            <img src="{% static 'images/add.svg' %}">
+        </a>
+        {% for projeto in projects %}
+        <a class="project" href="{% url 'project' projeto.project.id %}">
+            <strong>{{ projeto.project.name }}</strong>
+            <p>{{ projeto.project.description }}</p>
+            <div>
+                <span>{{ projeto.project.created_at|date:"d/m/Y" }}</span>
+                <span>{{ projeto.permission_display }}</span>
+            </div>
+        </a>
         {% endfor %}
-        {% for error in form.non_field_errors %}
-            <p>{{ error }}</p>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <form id="formCriarProjeto" name="formulario" action="{% url 'dashboard_projects' %}" method="post">
-        {% csrf_token %}
-        
-        <div class="input-box">
-            <input type="text" name="name" id="name" placeholder="Insira o nome do projeto" required>
-        </div>
-        
-        <div class="input-box">
-            <input type="text" name="description" id="description" placeholder="Insira a descrição do projeto" required>
-        </div>
-        
-        <div class="input-box">
-            <label for="start_date">Data de início: </label>
-            <input type="date" name="start_date" id="start_date" required>
-        </div>
-        
-        <div class="input-box">
-            <label for="end_date">Data de término: </label>
-            <input type="date" name="end_date" id="end_date" required>
-        </div>
-        
-        <div class="input-box button">
-            <input type="submit" value="Criar Projeto">
-        </div>
-        
-    </form>
+    </ul>
 </section>
 {% endblock content %}

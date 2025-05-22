@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<div class="sidebar">
+    <br>
+    <a class="icon-bar {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard_main' %}">
+        <img src="{% static 'images/dashboard.svg' %}">
+        <span>Dashboard</span>
+    </a>
+    <a class="icon-bar {% if request.path == '/projects/' %}active{% endif %}" href="{% url 'projects' %}">
+        <img src="{% static 'images/projects.svg' %}">
+        <span>Projetos</span>
+    </a>
+
+
+</div>

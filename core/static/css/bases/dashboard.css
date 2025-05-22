@@ -40,18 +40,20 @@ body {
 header {
     position: absolute;
     display: flex;
+    height: 7vh;
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     background-color: var(--cor-branco);
     color: var(--cor-preto);
     align-items: center;
     justify-content: center;
 }
+
 
 /* Estilizando o main */
 main {

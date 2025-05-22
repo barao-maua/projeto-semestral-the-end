@@ -8,14 +8,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/base2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bases/dashboard.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/app.png' %}">
 </head>
 <body>
-    {% block content_left %}
-    {% endblock content_left %}
+    {% include "components/header.html" %}
 
-    {% block content_right %}
-    {% endblock content_right %}
+    <div class="container">
+        {% include "components/sidebar_project.html" %}
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </div>
 </body>
 </html>

@@ -1,3 +1,12 @@
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+
 .alert {
     padding: 8px;
     background-color: #f44336;
@@ -64,4 +73,11 @@ form .text h3 a{
 
 form .text h3 a:hover{
     text-decoration: underline;
+}
+
+.label_date {
+    display: flex;
+    align-items: center;   /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    margin-right: 20px;
 }

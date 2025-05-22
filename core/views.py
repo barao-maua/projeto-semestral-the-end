@@ -1,14 +1,18 @@
-from django.shortcuts import render, get_list_or_404, redirect
+from django.shortcuts import render, get_list_or_404, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from core.models import Project, Profile, Task, Comment, ProjectPermission
 import datetime
+
+#________________________Startup___________________________
 
 def home(request):
     return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
+
+#________________________Login/Register___________________________
 
 def register(request):
     if request.method == 'POST':
@@ -36,48 +40,6 @@ def register(request):
     
     return render(request, 'registration/register.html')
 
-@login_required
-def dashboard_projects(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        description = request.POST['description']
-        start_date = request.POST['start_date']
-        end_date = request.POST['end_date']
-        project = Project(1, name, description, start_date, end_date, datetime.datetime.now())
-
-        project.save()
-    projects = Project.objects.all()
-    return render(request, 'dashboard/projects.html', {projects: projects})
-
-# Visualização das informações do usuário
-@login_required
-def dashboard_main(request):
-    return render(request, 'dashboard/main.html')
-
-@login_required
-def task(request):
-    if request.method == 'POST':
-        title = request.POST['title']
-        description = request.POST['description']
-        start_date = request.POST['start_date']
-        end_date = request.POST['end_date']
-        task = Task(1, title, description, start_date, end_date, datetime.datetime.now())
-
-        task.save()
-    tasks = Task.objects.all()
-    return render(request, 'dashboard/tasks.html')
-
-@login_required
-def dashboard_analytics(request):
-    return render(request, 'dashboard/analytics.html')
-
-@login_required
-def profile(request):
-    return render(request, 'profile/main.html')
-
-@login_required
-def teams(request):
-    return render(request, 'dashboard/teams.html')
 
 @login_required
 def profile_edit(request):
@@ -95,3 +57,113 @@ def profile_edit(request):
         return redirect('profile_edit')
 
     return render(request, 'profile/edit.html', {'profile': profile})
+
+@login_required
+def profile(request):
+    return render(request, 'profile/main.html')
+
+#________________________Projects___________________________
+"""
+Dashboard
+Projects
+"""
+
+@login_required
+def dashboard_main(request):
+    return render(request, 'dashboard/main.html')
+
+@login_required
+def create_project(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+
+        project = Project(
+            name=name,
+            description=description,
+            start_date=start_date,
+            end_date=end_date,
+            created_at=datetime.datetime.now()
+        )
+        project.save()
+
+        # Atribuir permissão "edit" ao criador do projeto
+        ProjectPermission.objects.create(
+            user=request.user,
+            project=project,
+            permission='edit'
+        )
+
+        return redirect('projects')
+
+    return render(request, 'dashboard/create_project.html')
+
+@login_required
+def projects(request):
+    permissions = ProjectPermission.objects.filter(user=request.user).select_related('project')
+    projects_with_permissions = []
+
+    for perm in permissions:
+        projects_with_permissions.append({
+            'project': perm.project,
+            'permission': perm.permission,
+            'permission_display': perm.get_permission_display()
+        })
+    
+    print("PERM =",projects_with_permissions)
+
+    return render(request, 'dashboard/projects.html', {
+        'projects': projects_with_permissions
+    })
+
+#________________________Desktop___________________________
+"""
+Dashboard <- Voltar ao dashboard
+Projects <- Selecionar outro projeto
+Tasks
+Teams
+Settigns
+"""
+
+@login_required
+def tasks(request, projeto_id):
+    projeto = get_object_or_404(Project, id=projeto_id)
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+        task = Task(1, title, description, start_date, end_date, datetime.datetime.now())
+
+        task.save()
+    tasks = Task.objects.all()
+    return render(request, 'project/tasks.html', {
+        'projeto': projeto
+    })
+
+def project(request, projeto_id):
+    projeto = get_object_or_404(Project, id=projeto_id)
+
+    return render(request, 'project/tasks.html', {
+        'projeto': projeto
+    })
+
+@login_required
+def teams(request, projeto_id):
+    projeto = get_object_or_404(Project, id=projeto_id)
+
+    return render(request, 'project/teams.html', {
+        'projeto': projeto
+    })
+
+@login_required
+def settings(request, projeto_id):
+    projeto = get_object_or_404(Project, id=projeto_id)
+
+    return render(request, 'project/settings.html', {
+        'projeto': projeto
+    })
+
+#________________________End___________________________

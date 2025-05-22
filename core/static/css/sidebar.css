@@ -64,3 +64,8 @@
     background-color: #0000001d;
     transform: scale(1.1);
 }
+
+.active {
+    background-color: #00000031;
+    color: #fff;
+}

@@ -1,25 +1,49 @@
-
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <header>
-    <a href="{% url "home" %}" class="grow" >
+    <a href="{% url "home" %}" class="grow">
         <img class="app-icon" src="{% static 'images/app.png' %}" alt="Logo TaskFlow">
     </a>
     <ul>
-        <li class="grow" ><a href="{% url "home" %}">Home</a></li>
-        <li class="grow" ><a href="{% url "dashboard_main" %}">Dashboard</a></li>
-        <li class="grow" ><a href="{% url "about" %}">Sobre</a></li>
+        <li class="grow"><a href="{% url "home" %}">Home</a></li>
+        <li class="grow"><a href="{% url "dashboard_main" %}">Dashboard</a></li>
+        <li class="grow"><a href="{% url "about" %}">Sobre</a></li>
     </ul>
+
     {% if user.is_authenticated %}
-        <button class="login">
-            <span>{{user.username}}</span>
-            <img class="login-icon" src="{{ user.profile.photo.url }}" alt="">
-        </button>
+        <div class="dropdown">
+            <button class="login dropdown-button" onclick="toggleDropdown()">
+                <span>{{ user.username }}</span>
+                <img class="login-icon" src="{{ user.profile.photo.url }}" alt="Foto de perfil">
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+                <a href="{% url 'profile' %}">Perfil</a>
+                <form class="" method="POST" action="{% url 'logout' %}" style="margin: 0;">
+                    {% csrf_token %}
+                    <button type="submit" style="background: none; border: none; padding: 10px 16px; width: 100%; text-align: left; cursor: pointer;">
+                        Sair
+                    </button>
+                </form>
+            </div>
+        </div>
     {% else %}
         <a class="login" href="{% url "login" %}">
             <span>Login</span>
-            <img class="app-icon" src="{% static "images/user.png" %}" alt="">
+            <img class="app-icon" src="{% static "images/user.svg" %}" alt="">
         </a>
     {% endif %}
 </header>
+<script>
+    function toggleDropdown() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.classList.toggle("show");
+    }
+
+    window.addEventListener("click", function(event) {
+        const dropdown = document.querySelector(".dropdown");
+        if (!dropdown.contains(event.target)) {
+            document.getElementById("dropdownMenu").classList.remove("show");
+        }
+    });
+</script>

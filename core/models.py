@@ -49,8 +49,7 @@ class Comment(models.Model):
 class ProjectPermission(models.Model):
     PERMISSION_CHOICES = [
         ('edit', 'Pode Editar'),
-        ('view', 'Pode Visualizar'),
-        ('none', 'Sem Permissão'),
+        ('view', 'Pode Visualizar')
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)

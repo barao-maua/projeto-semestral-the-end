@@ -8,16 +8,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bases/dashboard.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/app.png' %}">
 </head>
 <body>
-    {% include "components/header_work.html" %}
+    {% include "components/header.html" %}
 
     <div class="container">
-        {% include "components/sidebar_work.html" %}
 
-        {% include "components/sidebar_optional.html" %}
+        {% include "components/sidebar_profile.html" %}
 
         <main>
             {% block content %}
