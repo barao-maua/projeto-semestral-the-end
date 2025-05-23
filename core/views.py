@@ -14,6 +14,10 @@ def about(request):
 
 #________________________Login/Register___________________________
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from .models import Profile
+
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -32,9 +36,10 @@ def register(request):
         user = User.objects.create_user(username=username, password=password, email=email)
         user.save()
 
-        # Criando um perfil para o usuário
-        profile = Profile.objects.create(user=user)
-        profile.save()
+        # Verificando se o perfil já existe antes de criá-lo
+        if not Profile.objects.filter(user=user).exists():
+            profile = Profile.objects.create(user=user)
+            profile.save()
 
         return redirect('login')
     

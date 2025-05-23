@@ -15,7 +15,11 @@
         <div class="dropdown">
             <button class="login dropdown-button" onclick="toggleDropdown()">
                 <span>{{ user.username }}</span>
-                <img class="login-icon" src="{{ user.profile.photo.url }}" alt="Foto de perfil">
+                {% if user.profile.photo %}
+                    <img class="login-icon" src="{{ user.profile.photo.url }}" alt="Foto de perfil">
+                {% else %}
+                    <img class="login-icon" src="{% static 'images/user.svg' %}" alt="Foto de perfil padrão">
+                {% endif %}
             </button>
             <div id="dropdownMenu" class="dropdown-content">
                 <a href="{% url 'profile' %}">Perfil</a>
