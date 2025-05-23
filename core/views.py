@@ -90,7 +90,9 @@ def create_project(request):
             description=description,
             start_date=start_date,
             end_date=end_date,
-            created_at=datetime.datetime.now()
+            created_at=datetime.datetime.now(),
+            updated_at=datetime.datetime.now(),
+            owner=request.user
         )
         project.save()
 
@@ -120,7 +122,7 @@ def projects(request):
     print("PERM =",projects_with_permissions)
 
     return render(request, 'dashboard/projects.html', {
-        'projects': projects_with_permissions
+        'projects_with_permissions': projects_with_permissions
     })
 
 #________________________Desktop___________________________
@@ -135,19 +137,36 @@ Settigns
 @login_required
 def tasks(request, projeto_id):
     projeto = get_object_or_404(Project, id=projeto_id)
-    if request.method == 'POST':
-        title = request.POST['title']
-        description = request.POST['description']
-        start_date = request.POST['start_date']
-        end_date = request.POST['end_date']
-        task = Task(1, title, description, start_date, end_date, datetime.datetime.now())
 
-        task.save()
-    tasks = Task.objects.all()
+    if request.method == 'POST':
+        task_name = request.POST.get('task_name')
+        task_description = request.POST.get('task_description')
+        task_start_date = request.POST.get('task_start_date')
+        task_end_date = request.POST.get('task_end_date')
+
+        task = Task.objects.create(
+            name=task_name,
+            description=task_description,
+            start_date=task_start_date,
+            end_date=task_end_date,
+            created_at=datetime.datetime.now(),
+            updated_at=datetime.datetime.now(),
+        )
+
+        # Associa a task ao projeto
+        projeto.tasks.add(task)
+
+        return redirect('tasks', projeto_id=projeto.id)
+
+    # Recupera tarefas associadas ao projeto
+    tasks = projeto.tasks.all().order_by('-created_at')
+
     return render(request, 'project/tasks.html', {
-        'projeto': projeto
+        'projeto': projeto,
+        'tasks': tasks
     })
 
+@login_required
 def project(request, projeto_id):
     projeto = get_object_or_404(Project, id=projeto_id)
 

@@ -5,63 +5,62 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/task.css' %}">
-<main class="dashMain">
-    <div>
-        <h1 class="smallHeader">Projeto</h1>
+{% include "components/previewbar.html" %}
+<section class="tarefas">
+    <!-- Faça os recebendo os dados por for -->
+    <div class="outerBox">
+        <h2>Não iniciado</h2>
+        {% for task in tasks %}
+        <div class="innerBox">
+            <h3>{{ task.name }}</h3>
+            <div>
+                <input type="checkbox">
+                <p>{{ task.type }}</p>
+            </div>
+            <div>
+                <!-- Deve ter o incone de usuário aqui -->
+            </div>
+        </div>
+        {% endfor %}
+        <button>
+            <!-- Um icone de adicionar aqui -->
+            <p>Criar item</p>
+        </button>
     </div>
-    <section class="tarefas">
-        <div class="outerBox">
-            <h2>Não iniciado</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
+    <div class="outerBox">
+        <h2>Em progresso</h2>
+        <div class="innerBox">
+            <h3>Nome da tarefa</h3>
+            <div>
+                <input type="checkbox">
+                <p>Tipo da tarefa</p>
             </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
-        </div>
-        <div class="outerBox">
-            <h2>Em progresso</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
+            <div>
+                <!-- Deve ter o incone de usuário aqui -->
             </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
         </div>
-        <div class="outerBox">
-            <h2>Concluido</h2>
-            <div class="innerBox">
-                <h3>Nome da tarefa</h3>
-                <div>
-                    <input type="checkbox">
-                    <p>Tipo da tarefa</p>
-                </div>
-                <div>
-                    <!-- Deve ter o incone de usuário aqui -->
-                </div>
+        <button>
+            <!-- Um icone de adicionar aqui -->
+            <p>Criar item</p>
+        </button>
+    </div>
+    <div class="outerBox">
+        <h2>Concluido</h2>
+        <div class="innerBox">
+            <h3>Nome da tarefa</h3>
+            <div>
+                <input type="checkbox">
+                <p>Tipo da tarefa</p>
             </div>
-            <button>
-                <!-- Um icone de adicionar aqui -->
-                <p>Criar item</p>
-            </button>
+            <div>
+                <!-- Deve ter o incone de usuário aqui -->
+            </div>
         </div>
-    </section>
-</main>
+        <button>
+            <!-- Um icone de adicionar aqui -->
+            <p>Criar item</p>
+        </button>
+    </div>
+</section>
 {% endblock content %}
 

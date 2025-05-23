@@ -24,16 +24,43 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class TaskCategory(models.Model):
+    project = models.ForeignKey('Project', on_delete=models.CASCADE, related_name='task_categories')
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.project.name})"
+
+class Status(models.Model):
+    CHOICES = [
+        ('not_started', 'Não Iniciado'),
+        ('in_progress', 'Em Progresso'),
+        ('completed', 'Concluído'),
+        ('on_hold', 'Em Espera'),
+        ('cancelled', 'Cancelado'),
+    ]
+    name = models.CharField(max_length=100, choices=CHOICES)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     due_date = models.DateTimeField()
-    status = models.CharField(max_length=50, choices=[('todo', 'To Do'), ('in_progress', 'In Progress'), ('done', 'Done')])
     priority = models.CharField(max_length=50, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')])
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tasks')
+    category = models.ForeignKey(TaskCategory, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
+    states = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def clean(self):
+        # valida se a categoria pertence ao mesmo projeto da tarefa
+        if self.category and self.category.project != self.project:
+            raise ValidationError("A categoria da tarefa deve pertencer ao mesmo projeto da tarefa.")
 
     def __str__(self):
         return self.title
@@ -45,6 +72,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.created_at}"
+    def get_user(self):
+        return self.user
 
 class ProjectPermission(models.Model):
     PERMISSION_CHOICES = [
@@ -72,11 +101,14 @@ class Project(models.Model):
     description = models.TextField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    tasks = models.ManyToManyField(Task, related_name='projects')
-    comments = models.ManyToManyField(Comment, related_name='projects')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    permissions = models.ManyToManyField(User, through='ProjectPermission', related_name='projects_permissions')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects_owned')
+    tasks = models.ManyToManyField(Task, related_name='projects')
+    comments = models.ManyToManyField(Comment, related_name='projects')
+    team_members = models.ManyToManyField(User, related_name='projects_team_members')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
+    states = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
 
     def __str__(self):
         return self.name

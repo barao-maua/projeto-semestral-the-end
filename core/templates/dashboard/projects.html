@@ -11,7 +11,7 @@
         <a class="add-project" href="{% url "create_project" %}">
             <img src="{% static 'images/add.svg' %}">
         </a>
-        {% for projeto in projects %}
+        {% for projeto in projects_with_permissions %}
         <a class="project" href="{% url 'project' projeto.project.id %}">
             <strong>{{ projeto.project.name }}</strong>
             <p>{{ projeto.project.description }}</p>

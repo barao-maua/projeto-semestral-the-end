@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/previewbar.css' %}">
+
+<div class="preview-bar">
+    <a class="text-bar {% if request.path == '/dashboard/' %}active{% endif %}" href="{% url 'dashboard_main' %}">
+        <span>Lista</span>
+    </a>
+    <a class="text-bar {% if request.path == '/projects/' %}active{% endif %}" href="{% url 'projects' %}">
+        <span>Calendário</span>
+    </a>
+    <a class="text-bar {% if request.path == '/projects/' %}active{% endif %}" href="{% url 'projects' %}">
+        <span>Kaban</span>
+    </a>
+    <a class="text-bar {% if request.path == '/projects/' %}active{% endif %}" href="{% url 'projects' %}">
+        <span>Gantt</span>
+    </a>
+    <a class="text-bar {% if request.path == '/projects/' %}active{% endif %}" href="{% url 'projects' %}">
+        <span>Timeline</span>
+    </a>
+</div>
